@@ -1,64 +1,22 @@
-<!doctype html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Starbucks Coffee Korea</title>
+import { Component } from "../core"
+import "./Header.css"
+import { setupScrollEvent } from "../utils/scroll"
 
-    <!-- 오픈 그래프(The Open Graph protocol) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Starbucks" />
-    <meta property="og:title" content="Starbucks Coffee Korea" />
-    <meta
-      property="og:description"
-      content="스타벅스는 세계에서 가장 큰 다국적 커피 전문점으로, 64개국에서 총 23,187개의 매점을 운영하고 있습니다."
-    />
-    <meta property="og:image" content="../images/starbucks_seo.jpg" />
-    <meta property="og:url" content="https://starbucks.co.kr" />
+export default class Header extends Component {
+  constructor() {
+    super({ tagName: "header" })
+  }
+  render() {
+    const container = document.createElement("div")
+    container.className = "inner"
 
-    <!-- 트위터 카드(Twitter Cards) -->
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:site" content="Starbucks" />
-    <meta property="twitter:title" content="Starbucks Coffee Korea" />
-    <meta
-      property="twitter:description"
-      content="스타벅스는 세계에서 가장 큰 다국적 커피 전문점으로, 64개국에서 총 23,187개의 매점을 운영하고 있습니다."
-    />
-    <meta property="twitter:image" content="../images/starbucks_seo.jpg" />
-    <meta property="twitter:url" content="https://starbucks.co.kr" />
-
-    <!--파비콘-->
-    <link rel="icon" href="../favicon.png" />
-    <!--브라우저 스타일 초기화-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" />
-    <!--Google Fonts - 나눔고딕-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <!--Google Material Icons-->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-
-    <link rel="stylesheet" href="../css/common.css" />
-    <link rel="stylesheet" href="../css/signin.css" />
-
-    <script src="../js/common.js" defer></script>
-  </head>
-  <body>
-    <!-- HEADER -->
-    <header>
-      <div class="inner">
-        <a href="/" class="logo">
-          <img src="../images/starbucks_logo.png" alt="STARBUCKS" />
+    container.innerHTML = /*html*/ `
+        <a href="#/" class="logo">
+          <img src="/images/starbucks_logo.png" alt="STARBUCKS" />
         </a>
         <div class="sub-menu">
           <ul class="menu">
-            <li><a href="/signin">Sign In</a></li>
+            <li><a href="#/signin">Sign In</a></li>
             <li><a href="javascript:void(0)">My Starbucks</a></li>
             <li>
               <a href="javascript:void(0)">Customer Service & Ideas</a>
@@ -372,59 +330,52 @@
           </li>
         </ul>
       </div>
-    </header>
-
-    <section class="signin">
-      <h1>로그인</h1>
-      <div class="signin__card">
-        <h2><strong>Welcome!</strong> 스타벅스에 오신 것을 환영합니다.</h2>
-        <form>
-          <input type="text" placeholder="아이디를 입력하세요." />
-          <input type="password" placeholder="비밀번호를 입력하세요." />
-          <input type="submit" value="로그인" />
-          <p>
-            * 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br />
-            정기적으로 비밀번호를 변경하세요!
-          </p>
-        </form>
-        <div class="actions">
-          <a href="javascript:void(0)">회원가입</a>
-          <a href="javascript:void(0)">아이디 찾기</a>
-          <a href="javascript:void(0)">비밀번호 찾기</a>
-        </div>
+    `
+    const badgesContainer = document.createElement("div")
+    badgesContainer.className = "badges"
+    badgesContainer.innerHTML = /*html*/ `
+      <div class="badge">
+        <img src="/images/badge3.jpg" alt="Badge" />
       </div>
-    </section>
-
-    <!--FOOTER-->
-    <footer>
-      <div class="inner">
-        <ul class="menu">
-          <li><a href="javascript:void(0)" class="green">개인정보처리방침</a></li>
-          <li><a href="javascript:void(0)">영상정보처리기기 운영관리 방침</a></li>
-          <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
-          <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
-          <li><a href="javascript:void(0)">스타벅스 카드 이용약관</a></li>
-          <li><a href="javascript:void(0)">윤리경영 핫라인</a></li>
-        </ul>
-
-        <div class="btn-group">
-          <a href="javascript:void(0)" class="btn btn--white">찾아오시는 길</a>
-          <a href="javascript:void(0)" class="btn btn--white">신규입점제의</a>
-          <a href="javascript:void(0)" class="btn btn--white">사이트 맵</a>
-        </div>
-
-        <div class="info">
-          <span>사업자등록번호 201-81-21515</span>
-          <span>(주)스타벅스 코리아 대표이사 이석구</span>
-          <span>TEL : 02) 3015-1100 / FAX : 02) 3015-1106</span>
-          <span>개인정보 책임자 : 강기원</span>
-        </div>
-
-        <p class="copyright">
-          &copy; <span class="this-year"></span> Starbucks Coffee Company. All Rights Reserved.
-        </p>
-        <img src="../images/starbucks_logo_only_text.png" alt="STAR BUCKS" class="logo" />
+      <div class="badge">
+        <img src="/images/badge2.jpg" alt="Badge" />
       </div>
-    </footer>
-  </body>
-</html>
+    `
+
+    this.el.append(container, badgesContainer)
+    this.setupEventListeners()
+    this.setupScrollEventForBadge()
+  }
+  private setupEventListeners() {
+    const searchEl = this.el.querySelector(".search") as HTMLElement
+    const searchInputEl = searchEl.querySelector("input") as HTMLInputElement
+
+    searchEl.addEventListener("click", () => {
+      searchInputEl.focus()
+    })
+
+    searchInputEl.addEventListener("focus", () => {
+      searchEl.classList.add("focused")
+      searchInputEl.setAttribute("placeholder", "통합검색")
+    })
+
+    searchInputEl.addEventListener("blur", () => {
+      searchEl.classList.remove("focused")
+      searchInputEl.setAttribute("placeholder", "")
+    })
+  }
+  private setupScrollEventForBadge() {
+    const badgeEl = this.el.querySelector(".badges") as HTMLElement
+
+    setupScrollEvent(
+      [
+        {
+          element: badgeEl,
+          hideAnimation: { opacity: 0, display: "none" },
+          showAnimation: { opacity: 1, display: "block" },
+        },
+      ],
+      { threshold: 500, duration: 0.6 }
+    )
+  }
+}
